@@ -103,6 +103,28 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdempotencyKey'
         - $ref: '#/components/parameters/SpicyRetention'
+        - name: wait
+          in: query
+          required: false
+          description: |
+            Seconds to hold the connection open waiting for the task to reach a
+            terminal state, so you do not have to write a polling loop for the
+            first call. Values above 60 are clamped to 60; anything that is not a
+            positive integer is ignored rather than rejected, because a typo in an
+            optimisation parameter should not fail a generation that would
+            otherwise succeed.
+
+            Reaching a terminal state within the budget returns `200` with the
+            same task record `recordInfo` returns. Running out of budget returns
+            the ordinary `202` — identical to omitting `wait` — and you poll from
+            there. Disconnecting stops the wait and nothing else: the task keeps
+            running and is billed as usual.
+
+            The ceiling stays well under the 100-second edge timeout on purpose.
+            Past that line the connection is cut by the CDN rather than by us, and
+            the caller gets a `524` carrying neither the task ID nor any resumable
+            state — while the task exists and the funds are already held.
+          schema: { type: integer, minimum: 1, maximum: 60 }
       requestBody:
         required: true
         content:
@@ -110,6 +132,16 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateTaskRequest'
       responses:
+        '200':
+          description: Returned only when `wait` was supplied and the task reached a terminal state inside that budget. The body is the task record, identical in shape to `recordInfo`. A terminal state is not necessarily a success - check `data.state`.
+          headers:
+            Cache-Control:
+              description: Task records contain caller-specific state and must not be cached.
+              schema: { type: string, const: no-store }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskRecordEnvelope'
         '202':
           description: A newly accepted task is returned in `queued` state. A same-key idempotent replay returns the original task in its current state and does not create another hold. The hold is not a charge.
           headers:
