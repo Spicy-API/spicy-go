@@ -61,7 +61,7 @@ import (
 // enforces that from inside the package: there is no build metadata to read
 // back, because a tagged module exposes its version only to the programs that
 // depend on it, and never to itself.
-const Version = "0.1.1"
+const Version = "0.1.2"
 
 // UserAgent identifies this client on every API request.
 //
