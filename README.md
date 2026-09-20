@@ -1,7 +1,18 @@
+<div align="center">
+
 # spicy-go
 
-Official Go client for [SpicyAPI](https://spicyapi.ai) — image and video generation models behind
-one API.
+**Official Go SDK for [SpicyAPI](https://spicyapi.ai)** — image, video and text models behind one API.
+
+[Get a key](https://spicyapi.ai) · [Models](https://spicyapi.ai/models) · [Docs](https://docs.spicyapi.ai) · [Status](https://status.spicyapi.ai)
+
+</div>
+
+---
+
+One endpoint in front of 83 model families across 121 callable endpoints, billed in USD per request
+rather than in credits. Media generation is asynchronous and quotable before you spend; text models
+speak the OpenAI, Anthropic and Gemini wire formats.
 
 ```bash
 go get github.com/Spicy-API/spicy-go
@@ -187,3 +198,13 @@ server.
 
 - [Documentation](https://docs.spicyapi.ai)
 - [API reference](https://docs.spicyapi.ai/docs/api-reference)
+
+---
+
+<div align="center">
+<sub>
+
+Also available in [TypeScript](https://github.com/Spicy-API/spicy-devkit) · [Python](https://github.com/Spicy-API/spicy-python) · **Go** · [PHP](https://github.com/Spicy-API/spicy-php) · [Java](https://github.com/Spicy-API/spicy-java)
+
+</sub>
+</div>
