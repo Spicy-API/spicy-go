@@ -4,7 +4,7 @@ Official Go client for [SpicyAPI](https://spicyapi.ai) — image and video gener
 one API.
 
 ```bash
-go get github.com/SpicyAPI/spicy-go
+go get github.com/Spicy-API/spicy-go
 ```
 
 Requires Go 1.23+. **Standard library only** — this package goes into your dependency graph, and

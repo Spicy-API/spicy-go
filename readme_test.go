@@ -88,7 +88,7 @@ import (
 	"errors"
 	"log"
 
-	spicy "github.com/SpicyAPI/spicy-go"
+	spicy "github.com/Spicy-API/spicy-go"
 )
 
 // 片段用不到的 import 在这里消化掉：否则"未使用的 import"会盖过我们真正想看见的
@@ -162,8 +162,8 @@ func compileSnippet(t *testing.T, root, prelude, block, sink string) {
 		}
 	}
 	write("go.mod", "module spicyreadmecheck\n\ngo 1.23\n\n"+
-		"require github.com/SpicyAPI/spicy-go v0.0.0\n\n"+
-		"replace github.com/SpicyAPI/spicy-go => "+root+"\n")
+		"require github.com/Spicy-API/spicy-go v0.0.0\n\n"+
+		"replace github.com/Spicy-API/spicy-go => "+root+"\n")
 	write("main.go", sprintfHarness(indent(prelude), indent(block), indent(sink)))
 
 	build := exec.Command("go", "build", "./...")

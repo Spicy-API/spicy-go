@@ -1,3 +1,3 @@
-module github.com/SpicyAPI/spicy-go
+module github.com/Spicy-API/spicy-go
 
 go 1.23
