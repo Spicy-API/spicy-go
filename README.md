@@ -204,7 +204,7 @@ server.
 <div align="center">
 <sub>
 
-Also available in [TypeScript](https://github.com/Spicy-API/spicy-devkit) · [Python](https://github.com/Spicy-API/spicy-python) · **Go** · [PHP](https://github.com/Spicy-API/spicy-php) · [Java](https://github.com/Spicy-API/spicy-java)
+Also available in [TypeScript](https://www.npmjs.com/package/@spicyapi/sdk) · [Python](https://github.com/Spicy-API/spicy-python) · **Go** · [PHP](https://github.com/Spicy-API/spicy-php) · [Java](https://github.com/Spicy-API/spicy-java)
 
 </sub>
 </div>
